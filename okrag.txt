@@ -1,0 +1,165 @@
+\documentclass[a4paper,11pt,oneside]{book}
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage{siunitx}
+
+\usepackage{fancyhdr}
+\fancypagestyle{plain}{
+    \lhead{}
+    \fancyhead[R]{\thepage}
+    \fancyhead[L]{}
+    \renewcommand{\headrulewidth}{0pt}
+    \fancyfoot{}
+}
+
+\pagestyle{fancy}
+\fancyhead[R]{\thepage}
+\fancyhead[L]{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot{}
+
+
+
+\newcommand{\nl}{\newline\newline}
+\newcommand{\triangle}{\bigtriangleup}
+
+\begin{document}
+
+\title{Okrąg 9 punktów}
+\author{Łukasz Próchniak}
+\date{2021}
+\maketitle
+
+\chapter{Czym jest okrąg 9 punktów?}
+
+Inaczej nazywany okrągiem Eulera.
+\newline
+Jest to okrąg, na którym leżą następująco:
+\begin{enumerate}[i.]
+\item 3 spodki wysokości trójkąta(czerwone punkty)
+\item 3 środki boków trójkąta(niebieskie punkty)
+\item 3 środki odcników od wierzchołków trójkąta do ortocentrum(zielone punkty)
+\end{enumerate}
+
+\includegraphics[width=200]{okrag.png}
+\nl
+Ale skąd rzeczywiście wiemy, że te 9 punktów leży na jednym okręgu? Postaram się to wam szybko przedstawić.
+
+
+
+
+\chapter{Dlaczego te 9 punktów leży na jednym okręgu?}
+
+\section{Wykażmy najpierw, że ortocentrum odbite względem kolejnych boków trójkąta leży na okręgu opisanym na tym trójkącie.}
+Dla krótkości nazwijmy go $\triangle ABC$, a $H$ ortocentrum tego trójkąta.
+\newline
+Niech $H_1,H_2,H_3$ będą kolejnymi spodkami wysokości, a $X_1,X_2,X_3$ kolejnymi odbiciami $H$ względem boków. 
+\newline
+\includegraphics[width=280]{orto.png}
+\newline
+$\triangle BX_1C = \triangle BHC => \angle BX_1C = \angle BHC$ z symetrii
+\nl
+$\angle BHC = \angle H_2HH_3 = \ang{360}-\angle AH_2H - \angle AH_3H - \angle H_2AH_3 = \ang{360} - 2*\ang{90} - \angle H_2AH_3 = \ang{180} - \angle H_2AH_3 => \angle BX_1C + \angle H_2AH_3 = \ang{180} => ACX_1B$ jest cykliczny, powołując  się na lemat: jeśli suma kątów przeciwległych w czworokącie równa jest \ang{180} to na tym czworokącie da się odpisać okrąg.
+\nl
+Dowód tego lematu jest bardzo prosty. 
+\nl
+$2\alpha + 2\beta = \ang{360} => \alpha + \beta = \ang{180}$
+\nl
+\includegraphics[width=300]{tw1.png}
+\nl
+Skoro wiemy, że $X_1$ leży na okręgu opisansym na $\triangle ABC$ to analogiczną sytuację można przedstawić dla $X_2$ oraz $X_3$, zatem dowiedliśmy naszej tezy.
+\newpage
+
+\section{Wykażemy, że punkty odbicia $H$ względem kolejnych środków boków będą leżeć na tym okręgu.}
+Niech M będzie środkiem boku $BC$, a $D_1,D_2,D_3$ kolejnymi odbiciami $H$.
+\nl
+Zauważmy, że skoro jest to punkt odbicia względem środka to $HM = MD_1$, ale przecież $M$ jest środkiem $BC$, więc $BHCD_1$ jest równoległobokiem. Z czego wynika, że $\triangle BD_1C = \triangle BHC = \triangle BX_1C => \angle BX1C = \angle BD_1C => D_1$ leży na tym okręgu. Analogicznie dla odbić kolejnych dwóch środków. 
+\nl\nl
+\includegraphics[width=400]{odb.png}
+    
+\nl
+\newpage
+    
+\section{I gdzie ten nasz okrąg 9 punktów?}
+    
+\includegraphics[width=400]{final.png}
+\nl
+Niech $S_1,S_2,S_3$ będą kolejnymi środkami odcinków od $H$ do wierzchołków trójkąta.
+\newline
+Zauważmy, że jednokładność w skali $k = 1/2$ o środku w $H$ przekształci kolejno punkty:
+\begin{enumerate}[i.]
+    \item $A,B,C$ na $S_1,S_3,S_2$
+    \item $X_1,X_2,X_3$ na $H_1,H_2,H_3$
+    \item $D_1,D_2,D_3$ na $M_1,M_2,M_3$
+\end{enumerate}
+Takim sposobem otrzymaliśmy nasz okrąg 9 punktów.
+\newpage
+
+
+
+\chapter{Prosta Eulera}
+To, że 9 punktów leży na jednym okręgu dla dowolnego trójkąta nie jest jedyną piękną właściwością. Albowiem okazuje się, że:
+\begin{enumerate}[i.]
+    \item środek okręgu Eulera($E$)
+    \item środek ciężkości trójkąta($G$)
+    \item środek okręgu opisanego($O$)
+    \item ortocentrum($H$)
+\end{enumerate}
+leżą na jednej prostej.
+\nl
+\includegraphics[width=300]{line.png}
+\newpage
+
+
+\section{Wykażemy, że $E,H,O$ są współliniowe}
+Spróbujmy pokazać, że $E$ leży na odcinku $HO$ i co ciekawe połowi $HO$.
+\nl
+\includegraphics[width=300]{e.png}
+\nl
+Wiemy już, że $M_1,M_2,M_3$ oraz $H_1,H_2,H_3$ leżą na okręgu.
+\nl
+Skoro $E$ jest środkiem okręgu to odcinki $EH_1$ i $EM_1$ powinny być takie same, więc $E$ leży gdzieś na symetralnej $H_1M_1$. Analogicznie $E$ leży na symetralnej $H_2M_2$ i $H_3M_3$. Zatem $E$ jest punktem przecięcia się tych symetralnych.
+\nl
+Zauważmy, że $HH_1 \parallel OM_1$, ponieważ $HH_1 \perp BC$ i $O_1M \perp BC$, gdyż $O,M_1$ leżą na symetralnej $BC$. Z otrzymanej równoległości dowiadujemy się, że symetralna $H_1M_1$ jest również linią środkową $HOM_1H_1$, więc połowi $HO$. Analogicznie symetralne $H_2M_2$ i $H_3M_3$ także dzielą $HO$ na połowy(wszystkie te symetralne przecinają się na środku $HO$), więc właśnie środek $HO$ jest środkiem okręgu 9 punktów($E$).
+
+\newpage
+\section{Wykażemy, że $G,H,O$ są współliniowe}
+Niech $H_1$ będzie spodkiem wysokości z wierzchołka $A$, a $H_2$ spodkiem wsyokości z wierzchołka $M_1$
+\nl
+\includegraphics[width=400]{g.png}
+Pokażemy, że $\triangle GOM_1 \sim \triangle GHA$.
+\nl
+Po pierwsze $\angle OM_1A = \angle HAM_1$, ponieważ wiemy z 3.1 że $HH_1 \parallel OM_1$.
+\nl
+Po drugie $AM_1$ jest środkową, więc $\frac{AG}{GM_1} = 2:1$
+\nl
+Po trzecie O jest ortocentrum w $\triangle M_1M_2M_3$, ponieważ jest to punkt przecięcia symetralnych $\triangle ABC$, które są także wysokościami w $\triangle M_1M_2M_3$. Wynika to z faktu, że boki $\triangle M_1M_2M_3$ są liniami środkowymi $\triangle ABC$, więc są równoległe do boków $\triangle ABC$. 
+\newline
+$\frac{\triangle ABC}{\triangle M_1M_2M_3} = 2:1 => \frac{OM_1}{AH} = 2:1$
+\nl
+Zatem obrazem $\triangle GHA$ w skali $k = -1/2$ i środku jednokładności w $G$ jest $\trianfle GOM_1$. Z właściwości jednokładności dowiadujemy się, że $HG \parallel GO => $ $H,G,O$ są współniowe co kończy dowód, że $E,G,H,O$ leżą na prostej Eulera. 
+
+
+
+
+\chapter{Punkt Feuerbacha}
+Okazuje się, że okrąg opisany na punktach styczności okręgów dopisanych do trójkąta(czerwony okrąg) jest styczny wewnętrznie do okręgu 9 punktów(zielony okrąg). Punkt styczności tych dwóch okręgów zwany jest punktem Feuerbacha.
+\newline
+Dowód tego twierdzenia korzysta z inwersji, więc pozostaniemy tylko przy takim fakcie bez dowodu.
+\nl
+$E_1,E_2,E_3$ kolejno punkty styczności okręgów dopisanych do $\triangle ABC$
+\newline
+$M_1,M_2,M_3$ kolejno środki boków $\triangle ABC$ ponieważ wyznaczają one okrąg 9 punktów
+\nl\nl
+\includegraphics[width=340]{feuerbach.png}
+
+
+\chapter{Podziękowania}
+Dziękuję za przeczytanie mojej pracy. Mam nadzieję, że zachęci ona was do pogłębiania swoich zdolności matematycznych. 
+\nl\nl\nl\nl
+Łukasz Próchniak
+
+
+\end{document}
